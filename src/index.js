@@ -24,14 +24,14 @@ function onSearch(e) {
 }
 
 function onLoadMore() {
-  imagesApiService.fetchImages().then(appendImagesMarkup);
+  if (imagesApiService.fetchImages().then(appendImagesMarkup)) {
+    const element = refs.galleryContainer.lastElementChild;
 
-  const element = refs.galleryContainer.lastElementChild.lastElementChild;
-  console.log(element);
-  element.scrollIntoView({
-    behavior: 'smooth',
-    block: 'end',
-  });
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
+    });
+  }
 }
 
 function appendImagesMarkup(hits) {
