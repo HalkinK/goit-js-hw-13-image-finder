@@ -30,15 +30,23 @@ function onLoadMore() {
 function appendImagesMarkup(hits) {
   refs.galleryBox.insertAdjacentHTML('beforeend', imagesTpl(hits));
 
-  if (hits.length >= 12) {
-    const element = refs.galleryBox.lastElementChild;
-    console.log(element);
+  const element = refs.galleryBox.lastElementChild;
+  console.log(element);
 
-    element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-  }
+  element.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
+  });
+
+  // if (hits.length >= 12) {
+  //   const element = refs.galleryBox.lastElementChild;
+  //   console.log(element);
+
+  //   element.scrollIntoView({
+  //     behavior: 'smooth',
+  //     block: 'start',
+  //   });
+  // }
 }
 
 function clearGalleryContainer() {
