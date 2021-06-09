@@ -24,20 +24,23 @@ function onSearch(e) {
 }
 
 function onLoadMore() {
-  if (imagesApiService.fetchImages().then(appendImagesMarkup)) {
-    const element = refs.galleryContainer.lastElementChild;
+  imagesApiService.fetchImages().then(appendImagesMarkup);
+}
+
+function appendImagesMarkup(hits) {
+  refs.galleryBox.insertAdjacentHTML('beforeend', imagesTpl(hits));
+
+  if (hits.length >= 12) {
+    const element = refs.galleryBox.lastElementChild;
+    console.log(element);
 
     element.scrollIntoView({
       behavior: 'smooth',
-      block: 'end',
+      block: 'start',
     });
   }
 }
 
-function appendImagesMarkup(hits) {
-  refs.galleryContainer.insertAdjacentHTML('beforeend', imagesTpl(hits));
-}
-
 function clearGalleryContainer() {
-  refs.galleryContainer.innerHTML = '';
+  refs.galleryBox.innerHTML = '';
 }
